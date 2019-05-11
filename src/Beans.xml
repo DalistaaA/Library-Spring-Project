@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="DriverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/repeat_library_spring"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+
+	<bean id="classificationService"
+		class="com.sgic.rlp.serviceImpl.ClassificationServiceImpl">
+		<property name="classificationDao" ref="classificationDao" ></property>
+	</bean>
+	
+	<bean id="classificationDao"
+		class="com.sgic.rlp.daoImpl.ClassificationDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="authorService"
+		class="com.sgic.rlp.serviceImpl.AuthorServiceImpl">
+		<property name="authorDao" ref="authorDao" ></property>
+	</bean>
+	
+	<bean id="authorDao"
+		class="com.sgic.rlp.daoImpl.AuthorDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="bookDao"
+		class="com.sgic.rlp.daoImpl.BookDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="bookService"
+		class="com.sgic.rlp.serviceImpl.BookServiceImpl">
+		<property name="bookDao" ref="bookDao" ></property>
+	</bean>
+	
+</beans>
