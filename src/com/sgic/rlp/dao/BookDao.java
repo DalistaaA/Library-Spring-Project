@@ -12,7 +12,7 @@ public interface BookDao {
 
 	public abstract void deleteBookById(int bookId);
 
-	public abstract void updateBookByName(String newBookName, int bookId);
+	public abstract void updateBookById(Book book);
 
 	public abstract List<Book> findAllBook();
 }

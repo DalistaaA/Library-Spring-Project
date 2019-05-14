@@ -38,14 +38,14 @@ public class ClassificationServiceImpl implements ClassificationService {
 	}
 
 	@Override
-	public void updateClassificationByName(String newClassificationName, int classificationId) {
-		classificationDao.updateClassificationByName(newClassificationName, classificationId);
-		
+	public List<Classification> findAllClassificationInfo() {
+		return classificationDao.findAllClassification();
 	}
 
 	@Override
-	public List<Classification> findAllClassificationInfo() {
-		return classificationDao.findAllClassification();
+	public void updateClassificationById(Classification classification) {
+		classificationDao.updateClassificationById(classification);
+		
 	}
 
 }

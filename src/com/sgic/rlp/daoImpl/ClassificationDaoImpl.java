@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-
 import com.sgic.rlp.dao.ClassificationDao;
 import com.sgic.rlp.models.Classification;
 
@@ -88,13 +87,17 @@ public class ClassificationDaoImpl implements ClassificationDao{
 
 	@Override
 	public void deleteClassificationById(int classificationId) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateClassificationByName(String newClassificationName, int classificationId) {
-		// TODO Auto-generated method stub
+		/*try{  
+			Connection connection = null;
+			PreparedStatement ps = null;
+			connection = dataSource.getConnection();
+			
+			String SQL ="DELETE FROM classification where classificationId='" + classificationId+ "'";
+			ps = connection.prepareStatement(SQL);
+			
+			ResultSet rs = ps.executeQuery();
+			
+		}*/
 		
 	}
 
@@ -124,6 +127,26 @@ public class ClassificationDaoImpl implements ClassificationDao{
 			e.printStackTrace();
 		}
 		return classificationList;
+	}
+
+	@Override
+	public void updateClassificationById(Classification classification) {
+		
+		Connection connection = null;
+		PreparedStatement ps = null;
+				
+		try {
+			connection = dataSource.getConnection();
+			
+			String SQL ="UPDATE classification SET classification_name = '"+classification.getClassificationName()+"' WHERE classification_id='"+ classification.getClassificationId() +"'";
+			ps = connection.prepareStatement(SQL);			
+			ps.executeQuery();
+			
+		}
+			catch (Exception e) {
+				e.printStackTrace();
+		}
+		
 	}
 
 }

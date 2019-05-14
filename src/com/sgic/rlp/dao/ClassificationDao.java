@@ -12,7 +12,7 @@ public interface ClassificationDao {
 
 	public abstract void deleteClassificationById(int classificationId);
 
-	public abstract void updateClassificationByName(String newClassificationName, int classificationId);
+	public abstract void updateClassificationById(Classification classification);
 
 	public abstract List<Classification> findAllClassification();
 }

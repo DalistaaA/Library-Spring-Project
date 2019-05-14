@@ -2,7 +2,9 @@ package com.sgic.rlp.daoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -75,8 +77,33 @@ public class AuthorDaoImpl implements AuthorDao {
 
 	@Override
 	public List<Author> findAllAuthor() {
-		// TODO Auto-generated method stub
-		return null;
+
+		Connection connection = null;
+		PreparedStatement ps = null;
+		List<Author> authorList = new ArrayList<Author>();
+
+		try {
+			connection = dataSource.getConnection();
+
+			String SQL = "SELECT author_id, author_name FROM author";
+			ps = connection.prepareStatement(SQL);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Author author = new Author();
+				author.setAuthorId(rs.getInt(1));
+				author.setAuthorName(rs.getString(2));
+//				author.setAuthorId(rs.getInt("author_id"));
+//				author.setAuthorName(rs.getString("author_name"));
+				authorList.add(author);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return authorList;
 	}
 
 }

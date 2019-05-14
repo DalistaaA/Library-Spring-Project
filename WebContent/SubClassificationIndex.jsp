@@ -5,12 +5,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 </head>
 <body>
+<script src="js/subclassificationjquery.js"></script>
 <br>
 	<%@ include file="fragments/Header.jsp" %>
-	
-	
 	<div class="col-xs-8">
 			<div>
 				<button type="button" data-toggle="modal" data-target="#exampleModals" class="btn btn-success" style="float: right;">Add Sub Classification</button>
@@ -25,25 +28,25 @@
 				        </button>
 				      </div>
 				      <div class="modal-body">
-						<form>
+				      <form id="subclassificationform" method="post">
 							  <div class="form-group">
 							    <label for="sub_classification_id">Sub Classification ID</label>
-							    <input type="text" class="form-control" id="sub_classification_id" placeholder="Sub Classification ID">
+							    <input type="text" class="form-control" name="sub_classification_id" placeholder="Sub Classification ID">
 							  </div>
 							  <div class="form-group">
 							    <label for="sub_classification_name">Sub Classification Name</label>
-							    <input type="text" class="form-control" id="sub_classification_name" placeholder="Sub Classification Name">
+							    <input type="text" class="form-control" name="sub_classification_name" placeholder="Sub Classification Name">
 							  </div>
 							  <div class="form-group">
 							    <label for="classification_id">Classification ID</label>
-							    <input type="text" class="form-control" id="classification_id" placeholder="Classification ID">
+							    <input type="text" class="form-control" name="classification_id" placeholder="Classification ID">
 							  </div>
-						</form>
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				        <button type="submit" class="btn btn-primary">Save</button>
+				        <input type="submit" class="btn btn-primary" value="Submit"/>
 				      </div>
+				      </form>
 				    </div>
 				  </div>
 			</div>

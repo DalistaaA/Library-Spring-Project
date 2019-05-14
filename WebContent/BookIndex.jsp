@@ -11,7 +11,7 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
-<script src="jquery.js"></script>
+<script src="js/bookjquery.js"></script>
 <br>
 	<%@ include file="fragments/Header.jsp" %>
 	
@@ -38,10 +38,18 @@
 						    <label for="book_name">Book Name</label>
 						    <input type="text" class="form-control" name="book_name" placeholder="Book Name">
 						  </div>
+						  <div class="form-group">
+						    <label for="published_date">Published Date</label>
+						    <input type="text" class="form-control" name="published_date" placeholder="Published Date">
+						  </div>
+						  <div class="form-group">
+						    <label for="subclassification_id">Sub Classification Id</label>
+						    <input type="text" class="form-control" name="subclassification_id" placeholder="Sub Classification Id">
+						  </div>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="submit" class="btn btn-primary">Save</button>
+			        <input type="submit" class="btn btn-primary"/>
 			      </div>
 			    </div>
 			  </div>

@@ -19,7 +19,6 @@
 		class="com.sgic.rlp.serviceImpl.ClassificationServiceImpl">
 		<property name="classificationDao" ref="classificationDao" ></property>
 	</bean>
-	
 	<bean id="classificationDao"
 		class="com.sgic.rlp.daoImpl.ClassificationDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
@@ -29,20 +28,26 @@
 		class="com.sgic.rlp.serviceImpl.AuthorServiceImpl">
 		<property name="authorDao" ref="authorDao" ></property>
 	</bean>
-	
 	<bean id="authorDao"
 		class="com.sgic.rlp.daoImpl.AuthorDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
-	<bean id="bookDao"
-		class="com.sgic.rlp.daoImpl.BookDaoImpl">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
-	
+	 
 	<bean id="bookService"
 		class="com.sgic.rlp.serviceImpl.BookServiceImpl">
 		<property name="bookDao" ref="bookDao" ></property>
 	</bean>
+	<bean id="bookDao"
+		class="com.sgic.rlp.daoImpl.BookDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>	
 	
+	<bean id="subclassificationService"
+		class="com.sgic.rlp.serviceImpl.SubClassificationServiceImpl">
+		<property name="subclassificationDao" ref="subclassificationDao" ></property>
+	</bean>
+	<bean id="subclassificationDao"
+		class="com.sgic.rlp.daoImpl.SubClassificationDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 </beans>

@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<script src="jquery.js"></script>
+<script src="js/authorjquery.js"></script>
 <br>
 	<%@ include file="fragments/Header.jsp" %>
 	
@@ -47,19 +47,18 @@
 			  </div>
 		</div>
 		</form>
-		<table class= "table table-striped">
+		<table class= "table table-striped" id="authortable">
 		<thead>
   			<tr>
   				<th>Author Id</th>
   				<th>Author Name</th>
-  				<th colspan="2">Action</th>
-  			</tr>
-  			<tr>
-  				<td>1</td>
-  				<td>Mr.S.Kunaseelan</td>
-  				<td><button class="btn btn-warning">Edit</button></td><td><button class="btn btn-danger">Delete</button></td>
+  				<th>Edit</th>
+  				<th>Delete</th>
   			</tr>
   		</thead>
+  		<tbody>
+  		
+  		</tbody>
 		</table>
 	</div>
 	

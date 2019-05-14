@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.sgic.rlp.models.Book;
+import com.sgic.rlp.service.BookService;
+import com.sgic.rlp.serviceImpl.BookServiceImpl;
+
+
 
 @WebServlet("/BookController")
 public class BookController extends HttpServlet {
@@ -24,18 +29,22 @@ public class BookController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		Integer AuthorId = Integer.parseInt(request.getParameter("author_id"));
-//		String AuthorName = request.getParameter("author_name");
-//		
-//		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
-//		AuthorService authorService = ctx.getBean("authorService", AuthorServiceImpl.class);
-//		
-//		Author author = new Author();
-//		
-//		author.setAuthorId(AuthorId);
-//		author.setAuthorName(AuthorName);
-//		
-//		authorService.addAuthor(author);
+		Integer BookId = Integer.parseInt(request.getParameter("book_id"));
+		String BookName = request.getParameter("book_name");
+		String PublishedDate = request.getParameter("published_date");
+		String SubClassificationId = request.getParameter("subclassification_id");
+		
+		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+		BookService bookService = ctx.getBean("bookService", BookServiceImpl.class);
+		
+		Book book = new Book();
+		
+		book.setBookId(BookId);
+		book.setBookName(BookName);
+		book.setPublishedDate(PublishedDate);
+		book.setSubClassificationId(SubClassificationId);
+		
+		bookService.addBook(book);
 		doGet(request, response);
 	}
 
