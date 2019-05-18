@@ -92,16 +92,15 @@ public class AuthorDaoImpl implements AuthorDao {
 
 			while (rs.next()) {
 				Author author = new Author();
-				author.setAuthorId(rs.getInt(1));
-				author.setAuthorName(rs.getString(2));
-//				author.setAuthorId(rs.getInt("author_id"));
-//				author.setAuthorName(rs.getString("author_name"));
+				author.setAuthorId(rs.getInt("author_id"));
+				author.setAuthorName(rs.getString("author_name"));
 				authorList.add(author);
 
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e) 
+		{
+			
 		}
 		return authorList;
 	}

@@ -39,29 +39,24 @@ public class ClassificationController extends HttpServlet {
 				ClassificationServiceImpl.class);
 
 		response.setContentType("application/json");
-		PrintWriter writer = response.getWriter();
+		PrintWriter writter = response.getWriter();
 
 		JsonObjectBuilder rootBuilder = Json.createObjectBuilder();
 		JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 		JsonObjectBuilder planBuilder = Json.createObjectBuilder();
 
-		for (Classification classification:classificationService.findAllClassificationInfo()) {
-			JsonObject planJson = planBuilder.add("ClassificationId", classification.getClassificationId())
-					.add("ClassificationName", classification.getClassificationName()).build();
-			arrayBuilder.add(planJson);
-			
-			//System.out.println(classification.getClassificationId() + " " + classification.getClassificationName());
-		
-		}
+		for (Classification classification : classificationService.findAllClassificationInfo()) {
+			JsonObject planJson = planBuilder.add("classification_id", classification.getClassificationId())
+					.add("classification_name", classification.getClassificationName()).build();
 
+			arrayBuilder.add(planJson);
+		}
+		
 		JsonObject root = rootBuilder.add("classification", arrayBuilder).build();
-		writer.print(root);
-		System.out.println(root);
-		writer.flush();
-		writer.close();
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		writter.print(root);
+		writter.flush();
+		writter.close();
 	}
-	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

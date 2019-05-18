@@ -44,8 +44,7 @@ public class SubClassificationServiceImpl implements SubClassificationService {
 
 	@Override
 	public List<SubClassification> findAllSubClassificationInfo() {
-		subclassificationDao.findAllSubClassification();
-		return null;
+		return subclassificationDao.findAllSubClassification();
 	}
 
 }

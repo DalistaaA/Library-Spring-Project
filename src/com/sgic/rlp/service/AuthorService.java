@@ -12,7 +12,7 @@ public interface AuthorService {
 
 	public abstract void deleteAuthorById(int authorId);
 
-	public abstract void updateAuthorNAmeById(String newAuthorName, int authorId);
+	public abstract void updateAuthorNAmeById(String AuthorName, int authorId);
 
 	public abstract List<Author> findAllAuthorsInfo();
 }

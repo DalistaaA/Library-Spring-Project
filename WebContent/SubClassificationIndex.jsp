@@ -5,13 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+
 </head>
 <body>
-<script src="js/subclassificationjquery.js"></script>
 <br>
 	<%@ include file="fragments/Header.jsp" %>
 	<div class="col-xs-8">
@@ -50,7 +46,7 @@
 				    </div>
 				  </div>
 			</div>
-			<table class= "table table-striped">
+			<table class= "table table-striped" id="subclassificationtable">
 			<thead>
 	  			<tr>
 	  				<th>Sub Classification ID</th>
@@ -58,16 +54,25 @@
 	  				<th>Classification ID</th>
 	  				<th colspan="2">Action</th>
 	  			</tr>
-	  			<tr>
-	  				<td>1</td>
-	  				<td>Applied Biology</td>
-	  				<td>1</td>
-	  				<td><button class="btn btn-warning">Edit</button></td><td><button class="btn btn-danger">Delete</button></td>
-	  			</tr>
 	  		</thead>
+	  		<tbody>
+	  		
+	  		</tbody>
 			</table>
 		</div>
 	
-	<%@ include file="fragments/Footer.jsp" %>
+</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+		integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+		crossorigin="anonymous"></script>
+
+	<script src="js/subclassificationjquery.js"></script>
+	</div>
 </body>
 </html>

@@ -32,31 +32,28 @@ public class AuthorController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
 		AuthorService authorService = ctx.getBean("authorService", AuthorServiceImpl.class);
 		
 		response.setContentType("application/json");
-		PrintWriter writer = response.getWriter();
+		PrintWriter writter = response.getWriter();
 
 		JsonObjectBuilder rootBuilder = Json.createObjectBuilder();
 		JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 		JsonObjectBuilder planBuilder = Json.createObjectBuilder();
-		
-		for (Author author:authorService.findAllAuthorsInfo()) {
-			JsonObject planJson = planBuilder.add("AuthorId", author.getAuthorId())
-					.add("AuthorName", author.getAuthorName()).build();
-			arrayBuilder.add(planJson);
-			
-			//System.out.println(classification.getClassificationId() + " " + classification.getClassificationName());
-		
-		}
 
+		for (Author author:authorService.findAllAuthorsInfo()) {
+			JsonObject planJson = planBuilder.add("author_id",author.getAuthorId())
+					.add("author_name",author.getAuthorName()).build();
+
+			arrayBuilder.add(planJson);
+		}
+		
 		JsonObject root = rootBuilder.add("author", arrayBuilder).build();
-		writer.print(root);
-		System.out.println(root);
-		writer.flush();
-		writer.close();
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		writter.print(root);
+		writter.flush();
+		writter.close();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

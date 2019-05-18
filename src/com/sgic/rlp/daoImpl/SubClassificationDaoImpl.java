@@ -2,7 +2,9 @@ package com.sgic.rlp.daoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -35,7 +37,7 @@ public class SubClassificationDaoImpl implements SubClassificationDao {
 			
 			ps.setInt(1, subClassification.getSubclassificationId());
 			ps.setString(2, subClassification.getSubclassificationName());
-			ps.setString(3, subClassification.getClassificationId());
+		    ps.setInt(3, subClassification.getClassificationId());
 			
 			int executeUpdate = ps.executeUpdate();
 			if(executeUpdate>0) {
@@ -73,7 +75,31 @@ public class SubClassificationDaoImpl implements SubClassificationDao {
 
 	@Override
 	public List<SubClassification> findAllSubClassification() {
-		return null;
+		Connection connection = null;
+		PreparedStatement ps = null;
+		List<SubClassification> subClassificationList = new ArrayList<SubClassification>();
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String SQL ="SELECT * FROM sub_classification";
+			ps = connection.prepareStatement(SQL);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				SubClassification subClassification = new SubClassification();
+				subClassification.setSubclassificationId(rs.getInt("sub_classification_id"));
+				subClassification.setSubclassificationName(rs.getString("sub_classification_name"));
+				subClassification.setClassificationId(rs.getInt("classification_id"));
+				subClassificationList.add(subClassification);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return subClassificationList;
 	}
 
 }

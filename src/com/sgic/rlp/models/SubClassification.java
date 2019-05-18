@@ -3,7 +3,7 @@ package com.sgic.rlp.models;
 public class SubClassification {
 	private int subclassificationId;
 	private String subclassificationName;
-	private String classificationId;
+	private int classificationId;
 
 	public int getSubclassificationId() {
 		return subclassificationId;
@@ -21,12 +21,14 @@ public class SubClassification {
 		this.subclassificationName = subclassificationName;
 	}
 
-	public String getClassificationId() {
+	public int getClassificationId() {
 		return classificationId;
 	}
 
-	public void setClassificationId(String classificationId) {
+	public void setClassificationId(int classificationId) {
 		this.classificationId = classificationId;
 	}
+
+	
 
 }

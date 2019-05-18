@@ -5,14 +5,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+
 
 </head>
 <body>
-<script src="js/authorjquery.js"></script>
+
 <br>
 	<%@ include file="fragments/Header.jsp" %>
 	
@@ -43,10 +40,10 @@
 			      <div class="modal-footer">
 			        <input type="submit" class="btn btn-primary" value="Submit"/>
 			      </div>
+			      </form>
 			    </div>
 			  </div>
 		</div>
-		</form>
 		<table class= "table table-striped" id="authortable">
 		<thead>
   			<tr>
@@ -61,7 +58,11 @@
   		</tbody>
 		</table>
 	</div>
-	
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="js/authorjquery.js"></script>
 	<%@ include file="fragments/Footer.jsp" %>
 </body>
 </html>

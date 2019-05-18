@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	
-	find_classification();
+	find_classifications()
 	$("#classificationform").submit(function(event) {
 		event.preventDefault();
 		console.log($("#classificationform").serialize());
@@ -9,30 +8,29 @@ $(document).ready(function() {
 			type : 'post',
 			data : $("#classificationform").serialize(),
 			success : function(data) {
-				//alert(data);
+				console.log(data);
 			}
 		});
 	});
 	
-	function find_classification() {
-		$.ajax({
-					url : 'ClassificationController',
-					type : 'get',
-					success : function(datas) {
-						//console.log(datas);
-						$.each(datas.classification,function(key, classificationList) {
-											console.log(classificationList);
-											var row = `<tr>
-												<td>${classificationList.ClassificationId}</td>
-												<td>${classificationList.ClassificationName}</td>
-												<td><button class="btn btn-warning editaction" data-id='${classificationList.classificationId}'>Edit</button></td>
-												<td><button class="btn btn-danger deleteaction" data-id='${classificationList.classificationId}'>Delete</button></td>
-												</tr>`;
-											$("#classificationtable tbody").append(row);
-										})
-					}
-				})
-	}
-	
 });
 
+function find_classifications() {
+	$.ajax({
+		url:"ClassificationController",
+		type:"get",
+		success:function(data){
+			$.each(data.classification, function(key, classificationList) {
+				console.log(classificationList);
+				var row=`
+				<tr>
+				<td>${classificationList.classification_id}</td>
+				<td>${classificationList.classification_name}</td>
+				<td><button class='btn btn-warning'>Edit</button></td>
+				<td><button class='btn btn-danger'>Delete</button></td>
+				</tr>`;
+				$("#classificationtable tbody").append(row);
+			})
+		}
+	});
+}

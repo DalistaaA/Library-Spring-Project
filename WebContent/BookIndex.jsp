@@ -5,13 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
 </head>
 <body>
-<script src="js/bookjquery.js"></script>
 <br>
 	<%@ include file="fragments/Header.jsp" %>
 	
@@ -19,7 +14,6 @@
 		<div>
 			<button type="button" data-toggle="modal" data-target="#exampleModalb" class="btn btn-success" style="float: right;">Add Book</button>
 		</div>
-		<form id="bookform" method="post">
 		<div class="modal" tabindex="-1" role="dialog" id="exampleModalb">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -30,6 +24,7 @@
 			        </button>
 			      </div>
 			      <div class="modal-body">
+			      <form id="bookform" method="post">
 						  <div class="form-group">
 						    <label for="book_id">Book ID</label>
 						    <input type="text" class="form-control" name="book_id" placeholder="Book ID">
@@ -51,11 +46,11 @@
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			        <input type="submit" class="btn btn-primary"/>
 			      </div>
+			      </form>
 			    </div>
 			  </div>
 		</div>
-		</form>
-		<table class= "table table-striped">
+		<table class= "table table-striped" id="booktable">
 		<thead>
   			<tr>
   				<th>Book Id</th>
@@ -64,17 +59,23 @@
   				<th>SubClassification ID</th>
   				<th colspan="2">Action</th>
   			</tr>
-  			<tr>
-  				<td>1</td>
-  				<td>Applied Biology</td>
-  				<td>1</td>
-  				<td>Applied Biology</td>
-  				<td><button class="btn btn-warning">Edit</button></td><td><button class="btn btn-danger">Delete</button></td>
-  			</tr>
   		</thead>
+  		<tbody>
+  		
+  		</tbody>
 		</table>
 	</div>
 	
-	<%@ include file="fragments/Footer.jsp" %>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+		integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+		crossorigin="anonymous"></script>
+		
+		<script src="js/bookjquery.js"></script>
 </body>
 </html>

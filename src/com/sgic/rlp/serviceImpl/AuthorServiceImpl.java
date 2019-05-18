@@ -35,15 +35,17 @@ public class AuthorServiceImpl implements AuthorService {
 		
 	}
 
-	@Override
-	public void updateAuthorNAmeById(String newAuthorName, int authorId) {
-		authorDao.updateAuthorByName(newAuthorName, authorId);
-		
-	}
+	
 
 	@Override
 	public List<Author> findAllAuthorsInfo() {// TODO Auto-generated method stub
 		return authorDao.findAllAuthor();
+	}
+
+	@Override
+	public void updateAuthorNAmeById(String AuthorName, int authorId) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

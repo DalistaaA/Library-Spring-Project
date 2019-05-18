@@ -2,13 +2,16 @@ package com.sgic.rlp.daoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import com.sgic.rlp.dao.BookDao;
 import com.sgic.rlp.models.Book;
+import com.sgic.rlp.models.Classification;
 
 public class BookDaoImpl implements BookDao{
 
@@ -36,7 +39,7 @@ public class BookDaoImpl implements BookDao{
 			ps.setInt(1, book.getBookId());
 			ps.setString(2, book.getBookName());
 			ps.setString(3, book.getPublishedDate());
-			ps.setString(4, book.getSubClassificationId());
+			ps.setInt(4, book.getSubClassificationId());
 			
 			int executeUpdate = ps.executeUpdate();
 			if(executeUpdate>0) {
@@ -68,7 +71,32 @@ public class BookDaoImpl implements BookDao{
 
 	@Override
 	public List<Book> findAllBook() {
-		return null;
+		Connection connection = null;
+		PreparedStatement ps = null;
+		List<Book> bookList = new ArrayList<Book>();
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String SQL ="SELECT * FROM book";
+			ps = connection.prepareStatement(SQL);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Book book = new Book();
+				book.setBookId(rs.getInt("book_id"));
+				book.setBookName(rs.getString("book_name"));
+				book.setPublishedDate(rs.getString("published_date"));
+				book.setSubClassificationId(rs.getInt("sub_classification_id"));
+				bookList.add(book);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bookList;
 	}
 
 	@Override
